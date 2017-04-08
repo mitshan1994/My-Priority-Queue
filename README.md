@@ -43,12 +43,12 @@ PQ是一个优先队列(Priority Queue),如果PQ中的元素都具有一个
 	
 	// return size of the priority queue
 	size_t Size() const;
-	
-	// return capacity
-	size_t Capacity() const;
-	
+		
 	// clear the priority queue (after it, size = 0)
 	void Clear();
+	
+	// print elements from left to right, top to down
+	void Print();
 	
 运算符重载:
 
@@ -62,7 +62,6 @@ PQ是一个优先队列(Priority Queue),如果PQ中的元素都具有一个
 私有变量:
 
 	size_t size_;
-	size_t capacity_;
 	vector<T> heap_;
 	
 私有函数:

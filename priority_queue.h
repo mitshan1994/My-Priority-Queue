@@ -7,14 +7,12 @@ template <typename T>
 class PriorityQ {
 public:
     // constructors
-    PriorityQ() : size_(0), capacity_(10), heap_(11) { }
+    PriorityQ() : size_(0), heap_(11) { }
     PriorityQ(const PriorityQ<T> &pq) :
             size_(pq.size_),
-            capacity_(pq.capacity_),
             heap_(pq.heap_)
         { }
-    PriorityQ(PriorityQ<T> &&pq)
-        : size_(pq.size_), capacity_(pq.capacity_)
+    PriorityQ(PriorityQ<T> &&pq) : size_(pq.size_)
         { heap_ = std::move(pq.heap_); }
     PriorityQ(std::initializer_list<T> il);
     PriorityQ(const std::vector<T> &v);
@@ -30,7 +28,6 @@ public:
     T PopMax();
     bool IsEmpty() const;
     std::size_t Size() const;
-    std::size_t Capacity() const;
     void Clear();
 
     // overload operators
@@ -39,7 +36,6 @@ public:
 
 //private:
     size_t size_;
-    size_t capacity_;
     std::vector<T> heap_;
 
     // help functions used internally
@@ -50,8 +46,7 @@ public:
 
 template <typename T>
 PriorityQ<T>::PriorityQ(std::initializer_list<T> il)
-    :  size_(il.size()), capacity_(size_ * 2 + 1),
-       heap_(capacity_)
+    :  size_(il.size()), heap_(2 * size_ + 1)
 {
     for (auto it = il.begin(); it != il.end(); ++it)
         heap_[it - il.begin() + 1] = *it;
@@ -99,4 +94,9 @@ void PriorityQ<T>::PercolateUp(int hole, T val)
         }
     }
     heap_[hole] = val;
+}
+
+template <typename T>
+void PriorityQ<T>::Insert(const T &val)
+{
 }

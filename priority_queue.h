@@ -38,7 +38,7 @@ public:
     PriorityQ<T> operator=(PriorityQ<T> &&pq);
 
     // helper function
-    void Print();
+    void Print() const;
 
 private:
     size_t size_;
@@ -177,7 +177,7 @@ PriorityQ<T> PriorityQ<T>::operator=(PriorityQ<T> &&pq)
 }
 
 template <typename T>
-void PriorityQ<T>::Print()
+void PriorityQ<T>::Print() const
 {
     if (size_ == 0) {
         std::cout << "Empty priority queue.\n";

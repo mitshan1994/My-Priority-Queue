@@ -4,7 +4,7 @@ PQ是一个优先队列(Priority Queue),如果PQ中的元素都具有一个
 优先级,可以向PQ中添加元素;从PQ中弹出元素,每次弹出的元素具有最高优先级.
 
 #### 接口
-类型`T`应当是Comparable,默认实现是最大堆.
+类型`T`应当是Comparable(使用<来比较),默认实现是最大堆.
 
 构造函数(析构函数):
 
@@ -33,7 +33,7 @@ PQ是一个优先队列(Priority Queue),如果PQ中的元素都具有一个
 成员函数:(元素类型简记为value_type)
 
 	// insert val into priority queue
-	void Insert(value_type &val);
+	void Insert(const value_type &val);
 	
 	// get the maximal priority element and delete it
 	value_type PopMax();
@@ -48,7 +48,7 @@ PQ是一个优先队列(Priority Queue),如果PQ中的元素都具有一个
 	void Clear();
 	
 	// print elements from left to right, top to down
-	void Print();
+	void Print() const;
 	
 运算符重载:
 
